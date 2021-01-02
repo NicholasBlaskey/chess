@@ -52,6 +52,14 @@ type Position struct {
 	validMoves      []*Move
 }
 
+func (pos *Position) FlipWhosTurnItIs() {
+	if pos.turn == Black {
+		pos.turn = White
+	} else {
+		pos.turn = Black
+	}
+}
+
 // Update returns a new position resulting from the given move.
 // The move itself isn't validated, if validation is needed use
 // Game's Move method.  This method is more performant for bots that

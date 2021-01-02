@@ -120,6 +120,18 @@ func isInCheck(pos *Position) bool {
 	return squaresAreAttacked(pos, kingSq)
 }
 
+func IsInCheck(pos *Position, isBlacksMove bool) bool {
+	kingSq := pos.board.whiteKingSq
+	if isBlacksMove {
+		kingSq = pos.board.blackKingSq
+	}
+	// king should only be missing in tests / examples
+	if kingSq == NoSquare {
+		return false
+	}
+	return squaresAreAttacked(pos, kingSq)
+}
+
 func squaresAreAttacked(pos *Position, sqs ...Square) bool {
 	otherColor := pos.Turn().Other()
 	occ := ^pos.board.emptySqs

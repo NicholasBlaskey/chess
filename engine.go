@@ -120,9 +120,9 @@ func isInCheck(pos *Position) bool {
 	return squaresAreAttacked(pos, kingSq)
 }
 
-func IsInCheck(pos *Position, isBlacksMove bool) bool {
+func IsInCheck(pos *Position, isWhitesMove bool) bool {
 	kingSq := pos.board.whiteKingSq
-	if isBlacksMove {
+	if isWhitesMove {
 		kingSq = pos.board.blackKingSq
 	}
 	// king should only be missing in tests / examples
